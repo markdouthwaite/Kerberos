@@ -1,9 +1,9 @@
 package pkg
 
 import (
-	"math/rand"
 	"fmt"
-	)
+	"math/rand"
+)
 
 
 // EpsilonBandit - the simplest of the bandits. A single tunable parameter, and basic reward averaging.
@@ -16,13 +16,13 @@ type EpsilonBandit struct {
 
 
 // toString - get the string representation of the Bandit.
-func (b *EpsilonBandit) toString() string {
+func (b *EpsilonBandit) ToString() string {
 	return fmt.Sprintf("%d %f\n", b.N, b.Epsilon)
 }
 
 
 // getAction - choose an action to perform.
-func (b *EpsilonBandit) getAction() int {
+func (b *EpsilonBandit) GetAction() int {
 	if rand.Float32() > b.Epsilon {
 		return ArgMaxFloat32(b.Reward)
 	} else {
@@ -32,7 +32,7 @@ func (b *EpsilonBandit) getAction() int {
 
 
 // updateAction - update the internal state of the bandit with new information.
-func (b *EpsilonBandit) updateAction(action int, reward float32) {
+func (b *EpsilonBandit) UpdateAction(action int, reward float32) {
 	b.Counts[action] += 1
 	k := float32(b.Counts[action])
 	b.Reward[action] = ((k - 1) / k) * b.Reward[action] + (1 / k) * reward

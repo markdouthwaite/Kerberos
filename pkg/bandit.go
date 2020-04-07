@@ -2,12 +2,12 @@ package pkg
 
 
 type Bandit interface {
-	getAction() int
-	updateAction(int, float32)
+	GetAction() int
+	UpdateAction(int, float32)
 }
 
 
 type StringBandit interface {
-	toString() string
+	ToString() string
 }
 
