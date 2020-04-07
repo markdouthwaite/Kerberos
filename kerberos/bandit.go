@@ -1,4 +1,4 @@
-package pkg
+package kerberos
 
 
 type Bandit interface {

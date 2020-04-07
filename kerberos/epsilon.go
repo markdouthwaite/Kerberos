@@ -1,4 +1,4 @@
-package pkg
+package kerberos
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 )
 
 
-// EpsilonBandit - the simplest of the bandits. A single tunable parameter, and basic reward averaging.
+// EpsilonBandit - the simplest of the kerberos. A single tunable parameter, and basic reward averaging.
 type EpsilonBandit struct {
 	N int
 	Counts []int
@@ -15,13 +15,13 @@ type EpsilonBandit struct {
 }
 
 
-// toString - get the string representation of the Bandit.
+// ToString - get the string representation of the Bandit.
 func (b *EpsilonBandit) ToString() string {
 	return fmt.Sprintf("%d %f\n", b.N, b.Epsilon)
 }
 
 
-// getAction - choose an action to perform.
+// GetAction - choose an action to perform.
 func (b *EpsilonBandit) GetAction() int {
 	if rand.Float32() > b.Epsilon {
 		return ArgMaxFloat32(b.Reward)
@@ -31,7 +31,7 @@ func (b *EpsilonBandit) GetAction() int {
 }
 
 
-// updateAction - update the internal state of the bandit with new information.
+// UpdateAction - update the internal state of the bandit with new information.
 func (b *EpsilonBandit) UpdateAction(action int, reward float32) {
 	b.Counts[action] += 1
 	k := float32(b.Counts[action])
